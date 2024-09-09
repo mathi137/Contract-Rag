@@ -44,7 +44,6 @@ def insert_content(chuncks, user_id: id_type = 0) -> str:
 
 def search_by_similar(query: str, document_id: str = None, user_id: id_type = 0, limit: id_type = 5) -> list[dict]:
     filter = [{'user_id': int(user_id)}, {'document_id': document_id}] if document_id else [{'user_id': int(user_id)}]
-    print(query, filter)
     try:
         cursor = my_collection.find(
             {"$and": filter},

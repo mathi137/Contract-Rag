@@ -20,16 +20,16 @@ def extract_data():
         if not file:
             return Response(status=400)
         
-        filename = file.filename
+        file_name = file.filename
         file_bytes = file.read()
         
-        response = manager.extract_data_to_json(file_bytes)
+        response = manager.extract_data_to_json(file_bytes, file_name)
         
         return Response(json.dumps(response), status=202)
         
     except Exception as e:
         print(f'Exception: {str(e)}')
-        return Response(status=500)
+        return Response(json.dumps(str(e)), status=500)
         
 
 
@@ -46,7 +46,7 @@ def search():
     
     except Exception as e:
         print(f'Exception: {str(e)}')
-        return Response(status=500)
+        return Response(json.dumps(str(e)), status=500)
     
 
 @main.route('/chat', methods=['POST'])
@@ -62,4 +62,4 @@ def chat():
     
     except Exception as e:
         print(f'Exception: {str(e)}')
-        return Response(status=500)
+        return Response(json.dumps(str(e)), status=500)
