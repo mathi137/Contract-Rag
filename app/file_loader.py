@@ -18,7 +18,7 @@ def load_from_file(file_bytes: bytes, file_name: str) -> Document:
             loader_function = PyPDFLoader
         case 'docx' | 'doc':
             loader_function = Docx2txtLoader
-        case 'doc':
+        case 'txt':
             loader_function = TextLoader
         case _:
             raise Exception('File not supported.')

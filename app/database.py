@@ -70,6 +70,7 @@ def search_by_index(index: id_type, document_id: str = None, user_id: id_type = 
     try:
         cursor = my_collection.find(
             {"$and": filter},
+            limit=1,
         )
         
     except Exception as e:
