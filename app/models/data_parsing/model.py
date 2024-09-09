@@ -39,7 +39,7 @@ def extract_data_from_documentID(document_id: str, user_id: Union[str, int] = 0)
     
     extracted_data_json = call_json_output_parser(context)
     
-    return extracted_data_json
+    return {'document_id': document_id, 'data': extracted_data_json}
 
 
 def call_json_output_parser(context: str) -> dict:
